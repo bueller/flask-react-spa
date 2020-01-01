@@ -3,6 +3,8 @@ version: '3'
 
 services:
   frontend:
+    labels:
+      shipyard.route: '/'
     build:
       context: .
       dockerfile: ./docker/frontend/Dockerfile
@@ -21,6 +23,8 @@ services:
       - ./frontend:/flask/frontend
 
   mailhog:
+    labels:
+      shipyard.route: '/mailhog'
     image: mailhog/mailhog:v1.0.0
     ports:
       - 8025:8025  # access mailhog's webmail interface at localhost:8025
